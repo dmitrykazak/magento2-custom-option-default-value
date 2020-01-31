@@ -5,22 +5,43 @@ declare(strict_types=1);
 namespace DK\CustomOptionDefaultValue\Plugin\Catalog\UI\Form\Modifier;
 
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions;
-use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Element\Checkbox;
+use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Field;
 
 class IsDefaultCustomOption
 {
-    private const FIELD_IS_DEFAULT = 'is_default';
+    protected const FIELD_IS_DEFAULT = 'is_default';
+    private const DEFAULT_SORT_ORDER = 70;
 
     public function afterModifyMeta(CustomOptions $subject, array $meta): array
     {
-        echo "<pre>";
-        print_r($meta);
-        die();
-
-        $result = array_replace_recursive($meta, [
-            CustomOptions::GROUP_CUSTOM_OPTIONS_NAME
+        return array_replace_recursive($meta, [
+            CustomOptions::GROUP_CUSTOM_OPTIONS_NAME => [
+                'children' => [
+                    CustomOptions::GRID_OPTIONS_NAME => [
+                        'children' => [
+                            'record' => [
+                                'children' => [
+                                    CustomOptions::CONTAINER_OPTION => [
+                                        'children' => [
+                                            CustomOptions::GRID_TYPE_SELECT_NAME => [
+                                                'children' => [
+                                                    'record' => [
+                                                        'children' => [
+                                                            static::FIELD_IS_DEFAULT => $this->getIsDefaultFieldConfig(self::DEFAULT_SORT_ORDER),
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -39,7 +60,7 @@ class IsDefaultCustomOption
                         'value' => '0',
                         'valueMap' => [
                             'true' => '1',
-                            'false' => '0'
+                            'false' => '0',
                         ],
                     ],
                 ],

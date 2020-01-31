@@ -1,0 +1,42 @@
+{
+    "name": "dmitrykazak/magento2-custom-option-default-value",
+    "description": "This extension will allow you to set the default of product custom options for Magento 2",
+    "authors": [{
+        "name": "Dmitry Kazak",
+        "email": "dmitry.kazak0@gmail.com"
+    }],
+    "homepage": "https://github.com/dmitrykazak/magento2-custom-option-default-value",
+    "keywords": [
+        "magento 2",
+        "magento2-extension",
+        "custom options",
+        "default value",
+        "magento"
+    ],
+    "require": {
+        "php": "~7.2.0|~7.3.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "DK\\CustomOptionDefaultValue\\": ""
+        }
+    },
+    "scripts": {
+        "cs:check": [
+            "wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O php-cs-fixer",
+            "chmod a+x php-cs-fixer",
+            "./php-cs-fixer fix --config=.php_cs.dist -v --allow-risky=yes --dry-run --diff --stop-on-violation"
+        ],
+        "cs:fix": [
+            "wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -O php-cs-fixer",
+            "chmod a+x php-cs-fixer",
+            "./php-cs-fixer fix --config=.php_cs.dist -v --allow-risky=yes --diff"
+        ]
+    }
+}
