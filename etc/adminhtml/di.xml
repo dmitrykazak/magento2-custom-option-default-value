@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <type name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+       <plugin name="dk_custom_option_default_value_option_is_default"
+               type="DK\CustomOptionDefaultValue\Plugin\Catalog\UI\Form\Modifier\IsDefaultCustomOption"
+               disabled="false"
+       />
+   </type>
+</config>
