@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DK\CustomOptionDefaultValue\Plugin\Catalog\UI\Form\Modifier;
 
+use DK\CustomOptionDefaultValue\Model\Config;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions;
 use Magento\Ui\Component\Form\Element\Checkbox;
 use Magento\Ui\Component\Form\Element\DataType\Text;
@@ -14,8 +15,22 @@ class IsDefaultCustomOption
     protected const FIELD_IS_DEFAULT = 'is_default';
     private const DEFAULT_SORT_ORDER = 70;
 
+    /**
+     * @var Config
+     */
+    private $config;
+
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
+
     public function afterModifyMeta(CustomOptions $subject, array $meta): array
     {
+        if (!$this->config->isActiveModule()) {
+            return $meta;
+        }
+
         return array_replace_recursive($meta, [
             CustomOptions::GROUP_CUSTOM_OPTIONS_NAME => [
                 'children' => [
