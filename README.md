@@ -37,6 +37,12 @@ Magento 2 Custom Option Default Value extension use to set custom option default
 * Radio Box
 * Checkbox
 
+![Configuration](https://user-images.githubusercontent.com/5670207/73607519-005b9880-45c8-11ea-8b6c-eb7251a8d985.png)
+
+![Setting Custom Option of Product](https://user-images.githubusercontent.com/5670207/73607472-5976fc80-45c7-11ea-8398-b75a3fb593f8.png)
+
+![Product Page](https://user-images.githubusercontent.com/5670207/73607439-1157da00-45c7-11ea-9f4e-4e00763d3e6e.png)
+
 #### Support
  If you encounter any problems or bugs, please open an [issue](https://github.com/dmitrykazak/magento2-custom-option-default-value/issues) on GitHub.
 
